@@ -1,0 +1,72 @@
+$def with (content)
+
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="all,follow" />
+    <title>Ajax Test</title>
+    <!-- <link rel="stylesheet" media="aural" type="text/css" href="/static/css/aural.css" /> -->
+    <script type="text/javascript" src="/static/js/jquery-2.1.3.js"></script>
+    <script src="/static/js/ajax.js"></script>
+    <script src="/static/highcharts/js/highcharts.js"></script>
+    <script src="/static/highcharts/js/highcharts-more.js"></script>
+    <script src="/static/highcharts/js/modules/exporting.js"></script>
+
+</head>
+
+<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- 
+	Template 2047 Brown Field
+	by www.tooplate.com 
+-->
+<title>Brown Field Template</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="/static/css/tooplate_style.css" rel="stylesheet" type="text/css" />
+
+		<script type="text/javascript" src="/static/js/swfobject.js"></script>
+		<script type="text/javascript">
+			var flashvars = {};
+			flashvars.xml_file = "photo_list.xml";
+			var params = {};
+			params.wmode = "transparent";
+			var attributes = {};
+			attributes.id = "slider";
+			swfobject.embedSWF("flash_slider.swf", "flash_grid_slider", "440", "220", "9.0.0", false, flashvars, params, attributes);
+		</script>    
+</head>
+<body>
+
+<div id="tooplate_wrapper">
+
+	<div id="tooplate_header">
+        <div id="site_title">
+        	<h1><a href="#">Brown Field</a></h1>
+        </div>
+        <div id="tooplate_menu">
+            <ul>
+                <li><a href="/" >Search</a></li>
+                <li><a href="chart1">Chart 1</a></li>
+                <li><a href="chart2">Chart 2</a></li>
+                <li><a href="about">About Us</a></li>
+            </ul>    
+			</div> <!-- end of tooplate_menu -->
+    </div> <!-- end of forever header -->
+  $:content
+</div> <!-- wrapper -->
+
+<div id="tooplate_footer_wrapper">
+	<div id="tooplate_footer">
+        Copyright © 2015 <a href="#">Hamdi Burak Dilek--Mustafa Tosun</a> 
+    
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+console.log("here");
+$(document).ready( function() {
+  var loader_gif = $("#loader");
+  loader_gif.hide();
+  
+  $("#loadComments").click(function(event) {
+     var response = null;
+     /*
+     $.get( "commentsss.txt", function( r, status ) {
+       response = r;
+       console.log(r);
+       console.log(status);
+       $("#comments").html(response);
+     }, "text");
+     console.log(response);
+     */
+     $.ajax({
+       // url: "commentsss.txt",
+       url: "static/comments.txt",
+       context: $("#comments"),
+       // data: data,
+       success: function( r, status ) {
+           response = r;
+           console.log(r);
+           console.log(status);
+           $(this).html(response);
+       },
+       // error: function(jqXHR, status, error) {
+       error: function(jqXHR, status, error) {
+         console.log(jqXHR);
+         // console.log(status);
+         console.log(error);
+       },
+       complete: function() {
+         console.log("completed");
+       },
+       dataType: "text"
+     });
+  })
+  $("#searchButton").click(function(event) {
+      var term = $("#search").val()
+      /*
+      $.get( "http://localhost:1234/test", { 'term': term, 'name': "ali", "age": 9},
+         function( response, status ) {
+           console.log(response);
+           // console.log(status);
+         }, "json"); */
+      // loader_gif.show();            
+      $.ajax({
+        url: "query_titleee",
+        data: { title: term },
+        dataType: "json",
+        beforeSend: function() {
+          loader_gif.show();
+          console.log("beforeSend");
+        },
+        complete: function() {
+          loader_gif.hide();
+        },
+        success: function( data ) {
+          var results = $("#results");
+          results.empty();
+          if (data.status == "ok") {
+            if (data.books.length == 0) {
+              results.html("No books found");
+            }
+            else {
+              var ul = $("<ul>");
+              data.books.forEach(function(book) {
+                var li = $("<li>");
+                var str = book.title + " by " + book.author +
+                          " (" + book.price + "TL)"
+                var cover = $("<img>");
+                cover.attr("src", "static/cover_imgs/" + book.img);
+                cover.attr("width", "70px");
+                li.html(str);
+                li.prepend(cover);          
+                ul.append(li);          
+              })
+              results.append(ul);
+            } 
+          }
+          else {
+            results.html("Something bad happened");
+          }
+          console.log(data);
+        },
+      })   
+          
+  })     
+}) // document.ready
+
+
+
+
+
+
+
+
+

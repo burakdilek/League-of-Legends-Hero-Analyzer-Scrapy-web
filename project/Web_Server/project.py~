@@ -1,0 +1,77 @@
+import web
+import json
+import time
+
+urls = (
+    '/test', 'test',
+    '/query_title', 'find_titles',
+    '/', 'index'
+)
+               
+render = web.template.render("templates", base="base")
+               
+books = [ {"title": "My Name is Red",
+           "author": "Orhan Pamuk",
+           "price": 32,
+           "img" : "MyNameIsRed.jpg",
+           "summary": "This book is historical mystery ...."},
+           {"title": "Game of Thrones",
+           "author": "George R.R. Martin",
+           "price": 65,
+           "img": "Game_of_thrones.jpg",
+           "summary": "Fantasy book where the same names series ...."},
+           {"title": u"Da Vinci Sifresi",
+           "author": "Dan Brown",
+           "price": 22,
+           "img": "DaVinciCode.jpg",
+           "summary": u"Cok heyecanli ...."},
+          {"title": u"Da Vinci Sifresi 2",
+           "author": "Dan Brown",
+           "price": 22,
+           "img": "DaVinciCode.jpg",
+           "summary": u"Cok heyecanli ...."},
+           {"title": "Of Mice and Men",
+           "author": "John Steinbeck",
+           "price": 45,
+           "img": "OfMiceAndMen.jpg",
+           "summary": "This classic book is about ...."},
+           
+         ]
+
+class test:
+    def GET(self):
+       print self
+       d = (1,2,3) # { 'a':5, 'b':7, 'name':"cat", 'arr': [1,2,3,4] }
+       inp = web.input()
+       print inp
+       print (inp.get("age", 100))
+       # print json.dumps(d)
+       term = inp.get("term", "default string")
+       date = int(inp.get("date", 1990))
+       date = date / 2
+       print date
+       return json.dumps({'t': term.upper(), 'd':date}) 
+
+class find_titles:
+    def GET(self):
+       time.sleep(3);
+       inp = web.input()
+       title = inp.get("title").lower()
+       if title == None:
+         return json.dumps({'status': "error", 'mesg':"You need to supply a keyword"})
+       else:
+         found_books = []
+         for book in books:
+           if book["title"].lower().find(title) != -1:
+              found_books.append(book)
+         return json.dumps({'status': "ok",
+                            'books' : found_books})                      
+    
+class index:
+    def GET(self):
+       return render.index()
+    
+if __name__ == "__main__":
+    app = web.application(urls, globals())
+    web.httpserver.runsimple(app.wsgifunc(), ("127.0.0.1", 1234))
+
