@@ -1,7 +1,6 @@
 # League-of-Legends-Hero-Analyzer-Scrapy-web
 <br>Hamdi Burak Dilek
 <br>Mustafa Tosun
-<br>We did all parts of the project together --(Scrapy,Search,Charts,Web Design)
 <br>
 <br><b>Description:</b>
 <br>This project aims at scraping data about Computer Game which is called "League of Legends" chracters and their properties.
