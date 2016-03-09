@@ -1,6 +1,6 @@
 # League-of-Legends-Hero-Analyzer-Scrapy-web
-<br>Mustafa Tosun - 1107090030 
-<br>Hamdi Burak Dilek-1107090007
+<br>Hamdi Burak Dilek
+<br>Mustafa Tosun
 <br>We did all parts of the project together --(Scrapy,Search,Charts,Web Design)
 <br>
 <br><b>Description:</b>
